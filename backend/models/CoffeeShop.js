@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
 const CoffeeShopSchema = new mongoose.Schema({
-  name: String,
-  location: String,
-  products: [
+  name: { type: String, required: true },
+  location: { type: String, required: true },
+  inventory: [
     {
-      name: String,
-      quantity: Number,
+      productId: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
+      quantity: { type: Number, required: true },
     },
   ],
 });

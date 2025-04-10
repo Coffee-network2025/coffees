@@ -5,13 +5,12 @@ const OrderSchema = new mongoose.Schema({
   coffeeShopId: { type: mongoose.Schema.Types.ObjectId, ref: "CoffeeShop", required: true },
   items: [
     {
-      name: String,
-      quantity: Number,
+      productId: { type: mongoose.Schema.Types.ObjectId, ref: "Product" },
+      quantity: { type: Number, required: true },
     },
   ],
-  time: { type: String, required: true },
-  paymentMethod: { type: String, required: true },
   status: { type: String, default: "Pending" },
+  pickupTime: { type: Date, required: true },
 });
 
 module.exports = mongoose.model("Order", OrderSchema);
